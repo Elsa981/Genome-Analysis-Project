@@ -13,14 +13,17 @@
 module load bwa-mem2/2.3-GCC-13.3.0
 module load SAMtools/1.22.1-GCC-13.3.0
 
+REF=/home/elsasu/Genome-Analysis-Project/Data/04_Flye/assembly.fasta
+READ1=/home/elsasu/Genome-Analysis-Project/Data/02_Trimmomatic_out/chr3_illumina_R1_trimmed_paired.fastq.gz
+READ2=/home/elsasu/Genome-Analysis-Project/Data/02_Trimmomatic_out/chr3_illumina_R2_trimmed_paired.fastq.gz
+OUT=/home/elsasu/Genome-Analysis-Project/Data/05_mapping_BWA/chr3_bwa_aligned_reads.bam
 
 #Index
-bwa-mem2 index referense/genome/assembly/path
+bwa-mem2 index $REF
 
 #mem
-bwa-mem2 mem -t 2 path/to/assembly path/to/illumina/pairdend/reads/trimmed/R1 path/to/illumina/pairdend/reads/trimmed/R2 | \ 
-samtools view -bS - | samtools sort -o path/to/output.bam
+bwa-mem2 mem -t 2 $REF $READ1 $READ2 | samtools view -bS - | samtools sort -o $OUT
 
-samtools index path/to/output.bam
+samtools index $OUT
 
 
