@@ -12,8 +12,8 @@
 #modules
 module load QUAST/5.3.0-gfbf-2024a
 
-REF=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/NAME
+ASSEMBLY=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/NAME
 OUT=/home/elsasu/Genome-Analysis-Project/Data/08_quast
 
 #commands
-quast $REF -o $OUT -threads 1
+quast $ASSEMBLY -o $OUT --threads 1
