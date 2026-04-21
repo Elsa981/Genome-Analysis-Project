@@ -1,8 +1,8 @@
 #!/bin/bash 
 #SBATCH -A uppmax2026-1-61
 #SBATCH -p pelle
-#SBATCH -c 1
-#SBATCH -t 00:10:00
+#SBATCH -c 2
+#SBATCH -t 30:00:00
 #SBATCH -J polishing_assembly_pilon
 #SBATCH --mem=16GB
 #SBATCH --mail-type=ALL
@@ -25,4 +25,4 @@ java -Xmx8G -jar $EBROOTPILON/pilon.jar \
 --bam $ALIGNED_READS \
 --output pilon_assembly \
 --outdir $OUT \
---threads 1  
+--threads 2  
