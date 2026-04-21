@@ -12,7 +12,7 @@
 #modules
 module load QUAST/5.3.0-gfbf-2024a
 
-ASSEMBLY=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/NAME
+ASSEMBLY=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly.fasta
 OUT=/home/elsasu/Genome-Analysis-Project/Data/08_quast
 
 #commands

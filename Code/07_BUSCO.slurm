@@ -12,7 +12,7 @@
 #modules
 module load BUSCO/5.8.2-gfbf-2024a
 
-ASSEMBLY=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/NAME
+ASSEMBLY=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly.fasta
 OUT=/home/elsasu/Genome-Analysis-Project/Data/07_busco
 
 
