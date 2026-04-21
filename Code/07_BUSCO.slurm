@@ -2,7 +2,7 @@
 #SBATCH -A uppmax2026-1-61
 #SBATCH -p pelle
 #SBATCH -c 1
-#SBATCH -t 02:00:00
+#SBATCH -t 00:30:00
 #SBATCH -J BUSCO_eval
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elsa.sundh.9566@student.uu.se
