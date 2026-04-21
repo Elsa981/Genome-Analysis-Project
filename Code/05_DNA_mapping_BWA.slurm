@@ -2,7 +2,7 @@
 #SBATCH -A uppmax2026-1-61
 #SBATCH -p pelle
 #SBATCH -c 2
-#SBATCH -t 04:00:00
+#SBATCH -t 03:00:00
 #SBATCH -J DNA_mapping_BWA
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elsa.sundh.9566@student.uu.se
