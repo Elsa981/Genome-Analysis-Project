@@ -27,7 +27,8 @@ BuildDatabase -name $DBNAME $ASSEMBLY
 RepeatModeler -database $DBNAME --threads 2
 
 #run repeatmasker
-RepeatMasker -xsmall -nolow -lib NAME njap_chr3_db -pa 2 -gff $ASSEMBLY
+cd $OUT_MASK
+RepeatMasker -xsmall -nolow -lib $OUT_MODEL/$DBNAME-families.fa -pa 2 -gff $ASSEMBLY
 
 
 
