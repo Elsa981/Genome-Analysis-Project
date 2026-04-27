@@ -3,7 +3,7 @@
 #SBATCH -p pelle
 #SBATCH -c 1
 #SBATCH -t 02:00:00
-#SBATCH -J FastQC_Illumina_RNA
+#SBATCH -J FastQC_Illumina_RNA_posttrim
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elsa.sundh.9566@student.uu.se
 #SBATCH -o /home/elsasu/Genome-Analysis-Project/output_slurm/out_%x_%j.out
@@ -12,21 +12,21 @@
 # Load modules
 module load FastQC/0.12.1-Java-17
 
-OUT=/home/elsasu/Genome-Analysis-Project/Data/10_fastqc_rna
+OUT=/home/elsasu/Genome-Analysis-Project/Data/13_fastqc_posttrim_rna
 
-C1F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_1_f1.fq.gz 
-C2F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_2_f1.fq.gz 
-C3F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_3_f1.fq.gz
-C1R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_1_r2.fq.gz 
-C2R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_2_r2.fq.gz 
-C3R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Control_3_r2.fq.gz 
+C1F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_1_f1_trimmed_paired.fq.gz
+C2F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_2_f1_trimmed_paired.fq.gz
+C3F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_3_f1_trimmed_paired.fq.gz
+C1R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_1_r2_trimmed_paired.fq.gz
+C2R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_2_r2_trimmed_paired.fq.gz
+C3R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Control_3_r2_trimmed_paired.fq.gz
 
-H1F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_1_f1.fq.gz 
-H2F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_2_f1.fq.gz 
-H3F=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_3_f1.fq.gz 
-H1R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_1_r2.fq.gz 
-H2R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_2_r2.fq.gz 
-H3R=/crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/reads/transcriptomic_data/Heat_treated_42_12h_3_r2.fq.gz 
+H1F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_1_f1_trimmed_paired.fq.gz
+H2F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_2_f1_trimmed_paired.fq.gz
+H3F=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_3_f1_trimmed_paired.fq.gz
+H1R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_1_r2_trimmed_paired.fq.gz
+H2R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_2_r2_trimmed_paired.fq.gz
+H3R=/home/elsasu/Genome-Analysis-Project/Data/11_trimmomatic_rna/Heat_treated_42_12h_3_r2_trimmed_paired.fq.gz
 
 
 # Your commands
