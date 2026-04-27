@@ -11,6 +11,7 @@
 
 # Load modules
 module load HISAT2/2.2.1-gompi-2024a
+module load SAMtools/1.22.1-GCC-13.3.0
 
 REF=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly.fasta.masked
 IDX=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_build_index/genome_index
@@ -29,6 +30,8 @@ do
     | samtools sort -o $OUT/${BASE}_mapped.bam
 
     samtools index $OUT/${BASE}_mapped.bam
+
+done
 
 
 
