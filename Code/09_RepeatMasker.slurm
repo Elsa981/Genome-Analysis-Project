@@ -27,7 +27,6 @@ BuildDatabase -name $DBNAME $ASSEMBLY
 RepeatModeler -database $DBNAME -LTRStruct -threads 2
 
 #run repeatmasker
-cd $OUT_MASK
 RepeatMasker -xsmall -nolow -lib $OUT_MODEL/$DBNAME-families.fa -pa 2 -gff $ASSEMBLY
 
 
