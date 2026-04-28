@@ -1,0 +1,44 @@
+#!/bin/bash 
+#SBATCH -A uppmax2026-1-61
+#SBATCH -p pelle
+#SBATCH -c 2
+#SBATCH -t 24:00:00
+#SBATCH -J BRAKER3
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user elsa.sundh.9566@student.uu.se
+#SBATCH -o /home/elsasu/Genome-Analysis-Project/output_slurm/out_%x_%j.out
+#SBATCH -e /home/elsasu/Genome-Analysis-Project/error_slurm/err_%x_%j.err
+
+
+module load SeqKit/2.10.1
+module load SAMtools/1.22.1-GCC-13.3.0
+
+
+PROTEIN=/home/elsasu/Genome-Analysis-Project/C_purpureus.faa
+OUT=/home/elsasu/Genome-Analysis-Project/Data/14_braker3
+BAM_C1=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Control_1_mapped.bam
+BAM_C2=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Control_2_mapped.bam
+BAM_C3=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Control_3_mapped.bam
+BAM_H1=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Heat_treated_42_12h_1_mapped.bam
+BAM_H2=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Heat_treated_42_12h_2_mapped.bam
+BAM_H3=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out/Heat_treated_42_12h_3_mapped.bam
+
+seqkit seq -m 5000 /home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly.fasta.masked > /home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly_seqkit.fasta.masked
+
+REF=/home/elsasu/Genome-Analysis-Project/Data/06_Pilon_polish/pilon_assembly_seqkit.fasta.masked
+
+export AUGUSTUS_CONFIG_PATH="/home/elsasu/augustus_co" 
+
+
+singularity exec \
+ -B /home/elsasu:/home/elsasu \
+ --env AUGUSTUS_CONFIG_PATH=/home/elsasu/augustus_co \
+ /crex/proj/uppmax2026-1-61/Genome_Analysis/2_Zhou_2023/braker3.sif \
+ braker.pl \
+    --genome=$REF \
+    --softmasking \
+    --bam=$BAM_C1,$BAM_C2,$BAM_C3,$BAM_H1,$BAM_H2,$BAM_H3 \
+    --prot_seq=$PROTEIN \
+    --species=Niphotrichum_japonicum_3 \
+    --threads 2 \
+    --workingdir=$OUT
