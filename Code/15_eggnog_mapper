@@ -1,19 +1,20 @@
 #!/bin/bash 
 #SBATCH -A uppmax2026-1-61
 #SBATCH -p pelle
-#SBATCH -c 1
-#SBATCH -t 00:10:00
-#SBATCH -J eggnog_maper
+#SBATCH -c 2
+#SBATCH -t 20:00:00
+#SBATCH -J eggnog_mapper
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elsa.sundh.9566@student.uu.se
 #SBATCH -o /home/elsasu/Genome-Analysis-Project/output_slurm/out_%x_%j.out
 #SBATCH -e /home/elsasu/Genome-Analysis-Project/error_slurm/err_%x_%j.err
 
-module spider eggnog-mapper/2.1.13-gfbf-2024a
+module load eggnog-mapper/2.1.13-gfbf-2024a
 
 IN=/home/elsasu/Genome-Analysis-Project/Data/14_braker3/braker.aa
 DATA=/sw/data/uppnex/eggNOG/5.0/rackham/
 OUT_DIR=/home/elsasu/Genome-Analysis-Project/Data/15_eggnog_mapper
+GTF=/home/elsasu/Genome-Analysis-Project/Data/14_braker3/braker.gtf
 
-emapper.py -i $IN --itype proteins --cpu 2 --data_dir $DATA\
- --go_evidence experimental -o eggnog_mapper $OUT_DIR
+emapper.py -i $IN --itype proteins --cpu 2 --data_dir $DATA \
+--go_evidence experimental -o eggnog_mapper --output_dir $OUT_DIR --decorate_gff $GTF --decorate_gff_ID_field transcript_id
