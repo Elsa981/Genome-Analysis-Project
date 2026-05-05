@@ -1,8 +1,9 @@
 #!/bin/bash 
 #SBATCH -A uppmax2026-1-61
+#SBATCH --reservation uppmax2026-1-61_7
 #SBATCH -p pelle
-#SBATCH -c 1
-#SBATCH -t 00:10:00
+#SBATCH -c 2
+#SBATCH -t 01:30:00
 #SBATCH -J featureCounts
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elsa.sundh.9566@student.uu.se
@@ -16,5 +17,5 @@ GTF=/home/elsasu/Genome-Analysis-Project/Data/14_braker3/braker.gtf
 ALIGNED_DIR=/home/elsasu/Genome-Analysis-Project/Data/12_hisat2_out
 OUT=/home/elsasu/Genome-Analysis-Project/Data/16_read_counting/counts.txt
 
-featureCounts -T 1 -p --countReadPairs \
--t gene -g gene_id -a $GTF -o $OUT ${ALIGNED_DIR}/*mapped.bam
+featureCounts -T 2 -p --countReadPairs \
+-t exon -g gene_id -a $GTF -o $OUT ${ALIGNED_DIR}/*mapped.bam
